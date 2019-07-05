@@ -1,0 +1,26 @@
+version: '2'
+services:
+  nginx:
+    image: nginx:1-alpine
+    volumes:
+      - ./nginx/nginx.conf:/etc/nginx/conf.d/nginx.conf
+      - ./nginx/common:/usr/share/nginx/html/common
+    ports:
+      - '3000:3000'
+    depends_on:
+      - deck
+      - card_notes
+
+  deck:
+    build: ./deck
+    ports:
+      - '3005:3005'
+    volumes:
+      - ./deck/src:/code/src
+
+  card_notes:
+    build: ./card-notes
+    ports:
+      - '3001:3001'
+    volumes:
+      - ./card-notes/src:/code/src
