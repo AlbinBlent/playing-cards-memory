@@ -71,7 +71,7 @@ export default class PlayingCardsMemoryApp extends HTMLElement {
     )
     this.$resetDeckButton.addEventListener('click', this._resetDeck.bind(this))
 
-    this._index = 0
+    this._index = -1
   }
 
   connectedCallback() {
@@ -79,7 +79,7 @@ export default class PlayingCardsMemoryApp extends HTMLElement {
   }
 
   _resetDeck() {
-    this._index = 0
+    this._index = -1
     this._renderCard(this._index)
   }
 

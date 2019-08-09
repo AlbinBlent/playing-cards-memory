@@ -149,6 +149,7 @@ export default class CardNotesApp extends HTMLElement {
       this.$cardNoteInput.value = ''
     }
     this._writeCardNotesToLocalStorage()
+    this._render()
   }
 
   _render() {

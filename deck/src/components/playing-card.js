@@ -59,7 +59,11 @@ export default class PlayingCard extends HTMLElement {
   }
 
   _render() {
-    this.$text.setAttribute('value', this._value)
+    if (!this._value || this._value === '' || this._value === 'undefined') {
+      this.$text.setAttribute('value', 'Click next card for a card')
+    } else {
+      this.$text.setAttribute('value', this._value)
+    }
     this.$suit.map(element => (element.innerHTML = this._suit))
   }
 
@@ -83,6 +87,9 @@ export default class PlayingCard extends HTMLElement {
             break
           case 'Klöver':
             this._suit = '&#x2667'
+            break
+          default:
+            this._suit = ''
             break
         }
         break
